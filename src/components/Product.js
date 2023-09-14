@@ -6,9 +6,7 @@ import { StarIcon } from "@heroicons/react/24/solid";
 // const MIN_RATING = 1;
 
 function Product({ id, title, price, description, category, image }) {
-  /* const [rating] = useState(
-    Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1)) + MIN_RATING
-  ); */
+  // const [rating] = useState(Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1)) + MIN_RATING);
 
   const [rating, setRating] = useState(10);
   const [hasPrime, setPrime] = useState(0.3);
@@ -23,9 +21,30 @@ function Product({ id, title, price, description, category, image }) {
       <p className="absolute top-2 right-2 text-xs italic text-gray-400">
         {category}
       </p>
+      {/* <div className="flex justify-center w-auto h-48">
+        <Image
+          src={image}
+          width={200}
+          height={200}
+          style={{
+            objectFit: "contain",
+          }}
+        />
+      </div> */}
+      {/*  justify-center objectFit="contain" width={200}
+          height={200}
+          style={{
+          objectFit: "cover",
+        }} */}
 
-      <div className="flex justify-center">
-        <Image src={image} height={200} width={200} objectFit="contain" />
+      <div className="relative w-auto h-48">
+        <Image
+          src={image}
+          fill
+          style={{
+            objectFit: "contain",
+          }}
+        />
       </div>
 
       <h4 className="my-3">{title}</h4>
