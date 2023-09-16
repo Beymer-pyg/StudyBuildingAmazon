@@ -21,6 +21,11 @@ export const authOptions = {
     }), */
     // ...add more providers here
   ],
+  secret: process.env.SECRET,
+  session: {
+    strategy: "jwt",
+  },
+  debugger: process.env.NODE_ENV === "development",
 };
 
 export default NextAuth(authOptions);
