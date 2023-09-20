@@ -36,8 +36,19 @@ function CheckoutProduct({
 
   return (
     <div className="grid grid-cols-5">
-      <div className="flex justify-center">
-        <Image src={image} height={150} width={120} objectFit="contain" />
+      {/* <div className="flex justify-center">
+        150 120
+        <Image src={image} width={50} height={50} objectFit="contain" />
+      </div> */}
+
+      <div className="relative w-auto h-48">
+        <Image
+          src={image}
+          fill
+          style={{
+            objectFit: "contain",
+          }}
+        />
       </div>
 
       {/* Middle */}
