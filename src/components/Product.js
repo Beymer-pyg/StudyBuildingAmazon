@@ -4,8 +4,8 @@ import { StarIcon } from "@heroicons/react/24/solid";
 import { addToBasket } from "../slices/basketSlice";
 import { useDispatch } from "react-redux";
 
-// const MAX_RATING = 5;
-// const MIN_RATING = 1;
+const MAX_RATING = 5;
+const MIN_RATING = 1;
 
 function Product({ id, title, price, description, category, image }) {
   // const [rating] = useState(Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1)) + MIN_RATING);
@@ -16,7 +16,9 @@ function Product({ id, title, price, description, category, image }) {
   const [hasPrime, setPrime] = useState(0.3);
 
   useEffect(() => {
-    setRating(Math.floor(Math.random() * 5) + 1);
+    setRating(
+      Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1)) + MIN_RATING
+    );
     setPrime(Math.random() < 0.5);
   }, []);
 
@@ -83,7 +85,7 @@ function Product({ id, title, price, description, category, image }) {
 
       {hasPrime && (
         <div className="flex items-center space-x-2 -mt-5">
-          <img className="w-12" src="/Prime-Logo.png" alt="" />
+          <img className="w-12" src="/Prime-Logo.png" alt="Prime" />
           {/* <img src="/prime-A.png" alt="" /> */}
           <p className="text-xs text-gray-500">FREE Dedelivery</p>
         </div>

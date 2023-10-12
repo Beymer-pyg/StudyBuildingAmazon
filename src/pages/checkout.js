@@ -17,26 +17,70 @@ function Checkout() {
     const stripe = await stripePromise;
 
     //call the backend to create checkout session...
+    //abajo sin utilizar axios oslo acepta 6 pedidos
+    /* try {
+      const apiUrl = "/api/create-checkout-session";
+      const requestData = {
+        items: items,
+        email: session.user.email,
+      };
 
-    /* let data1 = JSON.stringify({
-      items: items,
-      email: session.user.email,
-    }); */
+      const response = await fetch(apiUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestData),
+      });
 
-    const checkoutSession = await axios
+      if (!response.ok) {
+        throw new Error(`Error en la solicitud: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log(data);
+
+      // Utiliza el sessionId de la respuesta en la llamada a stripe.redirectToCheckout
+      const result = await stripe.redirectToCheckout({
+        sessionId: data.id, // Utiliza data.id en lugar de checkoutSession.data.id
+      });
+    } catch (error) {
+      console.error(error);
+    } */
+
+    //axios acepta 7
+    /* const checkoutSession = await axios
       .post("/api/create-checkout-session", {
         items: items,
         email: session.user.email,
       })
       .catch(function (error) {
+        console.log(error.response.data);
+      }); */
+
+    let data1 = JSON.stringify({
+      items: items,
+      email: session.user.email,
+    });
+    const checkoutSession = await axios
+      .post("/api/create-checkout-session", data1, {
+        headers: { "Content-Type": "application/json" },
+      })
+      .catch(function (error) {
         console.log(error);
       });
 
-    /*  const checkoutSession = await axios.post(
-      "/api/create-checkout-session",
-      data1,
-      { headers: { "Content-Type": "application/json" } }
-    ); */
+    /*  let data1 = {
+      items: items,
+      email: session.user.email,
+    };
+    const checkoutSession = await axios
+      .post("/api/create-checkout-session", JSON.stringify(data1), {
+        headers: { "Content-Type": "application/json" },
+      })
+      .catch(function (error) {
+        console.log(error);
+      }); */
 
     /* const checkoutSession = await axios
       .post(
